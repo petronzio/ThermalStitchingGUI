@@ -11,6 +11,9 @@ QT       += widgets
 TARGET = ThermalGUI
 CONFIG   += c++11
 
+CONFIG += link_pkgconfig
+PKGCONFIG += opencv
+
 INCLUDEPATH += /usr/local/include/opencv2
 LIBS += -L/usr/local/lib -lopencv_core -lopencv_imgcodecs -lopencv_highgui
 
@@ -74,3 +77,4 @@ SUBDIRS += \
 OTHER_FILES += \
     Third-Party/Lepton/README.md \
     Third-Party/Lepton/leptonSDKEmb32PUB/Makefile
+

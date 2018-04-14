@@ -9,7 +9,7 @@ PanTilt _panTilt;
 Imager _imager;
 Display _display;
 Retriever _retriever;
-Stitcher _stitcher;
+//Stitcher _stitcher;
 
 void DisplayMessage (std::string message)
 {
@@ -73,13 +73,13 @@ bool InitializeRetriever ()
 
     // Retrieving module needs a reference to the PT Driver along with
     // the Imager Driver. Pass these in on initialization.
-    return EvaluateInitialization (_retriever.Initialize (_panTilt, _imager, _stitcher));
+    return true; //EvaluateInitialization (_retriever.Initialize (_panTilt, _imager, _stitcher));
 }
 
 bool InitializeStitcher ()
 {
 	DisplayMessage ("\tInitializing Stitching Module\t\t");
-	return EvaluateInitialization (_stitcher.Initialize ());
+    return true;// EvaluateInitialization (_stitcher.Initialize ());
 }
 
 int main2()

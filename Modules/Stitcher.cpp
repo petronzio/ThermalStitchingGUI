@@ -1,6 +1,8 @@
 #include "Stitcher.h"
+#include "ui_mainwindow.h"
+#include <opencv2/opencv.hpp>
 
-bool Stitcher::Initialize (void)
+bool Stitcher::Initialize (Ui::MainWindow *ui)
 {
     // Initialize the final image and apply a uniform color to
     // all indices. This will allow us to notice blank spots later on.
@@ -10,6 +12,16 @@ bool Stitcher::Initialize (void)
     _centerTilt = CENTER_TILT_PX;
     _imageHeight = IMAGE_HEIGHT;
     _imageWidth = IMAGE_WIDTH;
+
+    cv::Mat temp; // make the same cv::Mat
+    cv::cvtColor(_finalImage, temp,CV_BGR2RGB); // cvtColor Makes a copt, that what i need
+    QImage dest((const uchar *) temp.data, temp.cols, temp.rows, temp.step, QImage::Format_RGB888);
+    dest.bits();
+    //QPixmap dadpic ("/home/ubuntuvm/ThermalGUI/dad.jpg");
+    ui->image->setPixmap(QPixmap::fromImage(dest));
+    ui->image->setScaledContents( true );
+    ui->image->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
+
 	return true;
 }
 

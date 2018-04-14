@@ -14,14 +14,13 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    Ui::MainWindow *ui;
 
 private slots:
     void on_startButton_clicked();
 
     void on_resetButton_clicked();
 
-private:
-    Ui::MainWindow *ui;
 };
 
 #endif // MAINWINDOW_H
