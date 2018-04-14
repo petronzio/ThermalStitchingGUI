@@ -108,7 +108,8 @@ void Retriever::RetrievalThread ()
     RunningState = complete;
 
     // Save the final image.
-    _stitcher.SaveImage ();
+   // _stitcher.SaveImage ();
+    _stitcher.UpdateDisplay();
 }
 
 void Retriever::BeginCapture ()

@@ -1,6 +1,4 @@
 #include "Stitcher.h"
-#include "ui_mainwindow.h"
-#include <opencv2/opencv.hpp>
 
 bool Stitcher::Initialize (Ui::MainWindow *ui)
 {
@@ -12,17 +10,20 @@ bool Stitcher::Initialize (Ui::MainWindow *ui)
     _centerTilt = CENTER_TILT_PX;
     _imageHeight = IMAGE_HEIGHT;
     _imageWidth = IMAGE_WIDTH;
+    _ui = ui;
+    UpdateDisplay();
+	return true;
+}
 
+void Stitcher::UpdateDisplay()
+{
     cv::Mat temp; // make the same cv::Mat
     cv::cvtColor(_finalImage, temp,CV_BGR2RGB); // cvtColor Makes a copt, that what i need
     QImage dest((const uchar *) temp.data, temp.cols, temp.rows, temp.step, QImage::Format_RGB888);
     dest.bits();
-    //QPixmap dadpic ("/home/ubuntuvm/ThermalGUI/dad.jpg");
-    ui->image->setPixmap(QPixmap::fromImage(dest));
-    ui->image->setScaledContents( true );
-    ui->image->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
-
-	return true;
+    _ui->image->setPixmap(QPixmap::fromImage(dest));
+    _ui->image->setScaledContents( true );
+    _ui->image->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
 }
 
 /*

@@ -8,7 +8,8 @@
 #include <opencv/highgui.h>
 #include "opencv2/core/mat.hpp"
 #include "opencv2/imgcodecs.hpp"
-#include "mainwindow.h"
+#include "ui_mainwindow.h"
+#include <opencv2/opencv.hpp>
 
 #define IMAGE_DIMENSION 240.00
 #define ANGLE_CONVERSION_MULTIPLIER -0.64
@@ -26,6 +27,7 @@ class Stitcher
         bool Initialize (Ui::MainWindow *ui);
         void UpdateFinalImage (double panAngle, double tiltAngle);
         void SaveImage ();
+        void UpdateDisplay();
     private:
         cv::Mat _currentImage;
         cv::Mat _finalImage;
@@ -35,6 +37,7 @@ class Stitcher
         double _imageWidth;
         void CalculateFinalPx (double panDegree, double tiltDegree
                                , double* panOffset, double* tiltOffset);
+        Ui::MainWindow *_ui;
 };
 
 #endif /* Stitcher_H_ */
