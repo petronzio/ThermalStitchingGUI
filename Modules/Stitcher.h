@@ -28,6 +28,7 @@ class Stitcher
         void UpdateFinalImage (double panAngle, double tiltAngle);
         void SaveImage ();
         void UpdateDisplay();
+        void ResetFinalImage ();
     private:
         cv::Mat _currentImage;
         cv::Mat _finalImage;

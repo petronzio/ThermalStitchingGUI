@@ -20,6 +20,8 @@ void Retriever::RetrievalThread ()
     int panGoal;
     bool bPanReached = false;
 
+    _stitcher.ResetFinalImage ();
+
     for (iCurrentTilt = 0; iCurrentTilt < _stationCount; iCurrentTilt++)
     {
         if (bForwards)

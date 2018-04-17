@@ -11,15 +11,15 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Thermal Image Stitcher</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QLabel" name="image">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>80</x>
       <y>0</y>
-      <width>480</width>
+      <width>320</width>
       <height>320</height>
      </rect>
     </property>

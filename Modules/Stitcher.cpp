@@ -4,8 +4,7 @@ bool Stitcher::Initialize (Ui::MainWindow *ui)
 {
     // Initialize the final image and apply a uniform color to
     // all indices. This will allow us to notice blank spots later on.
-    _finalImage = cv::Mat (IMAGE_DIMENSION, IMAGE_DIMENSION, CV_8UC3,
-                           cv::Scalar(DEFAULT_RED,DEFAULT_GREEN,DEFAULT_BLUE));
+    ResetFinalImage();
     _centerPan = CENTER_PAN_PX;
     _centerTilt = CENTER_TILT_PX;
     _imageHeight = IMAGE_HEIGHT;
@@ -13,6 +12,12 @@ bool Stitcher::Initialize (Ui::MainWindow *ui)
     _ui = ui;
     UpdateDisplay();
 	return true;
+}
+
+void Stitcher::ResetFinalImage()
+{
+    _finalImage = cv::Mat (IMAGE_DIMENSION, IMAGE_DIMENSION, CV_8UC3,
+                           cv::Scalar(DEFAULT_RED,DEFAULT_GREEN,DEFAULT_BLUE));
 }
 
 void Stitcher::UpdateDisplay()
