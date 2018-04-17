@@ -15,11 +15,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_startButton_clicked()
 {
-   /* ui->diag->setText("Hello World");
-    QPixmap dadpic ("/home/ubuntuvm/ThermalGUI/dad.jpg");
-    ui->image->setPixmap(dadpic);
-    ui->image->setScaledContents( true );
-    ui->image->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);*/
+    //_retriever.BeginCapture();
 }
 
 void MainWindow::on_resetButton_clicked()

@@ -2,6 +2,15 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "Modules/Retriever.h"
+#include <QFile>
+#include <QDir>
+#include <QString>
+#include <iostream>
+#include <thread>
+#include "Drivers/PanTilt.h"
+#include "Drivers/Imager.h"
+#include "Modules/Stitcher.h"
 
 namespace Ui {
 class MainWindow;

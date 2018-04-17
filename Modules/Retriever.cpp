@@ -161,6 +161,7 @@ bool Retriever::Initialize (PanTilt &panTilt, Imager &imager, Stitcher &stitcher
         _stitcher = stitcher;
         RunningState = idle;
         _stationCount = STATION_COUNT;
+        BeginCapture ();
         return true;
     }
     catch (...)
