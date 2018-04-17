@@ -16,15 +16,12 @@ void Retriever::RetrievalThread ()
     std::cout << "Beginning Retrieval\n";
     int iCurrentTilt;
     int iCurrentPan;
-    bool bContinue;
     bool bForwards = true;
     int panGoal;
     bool bPanReached = false;
 
-
     for (iCurrentTilt = 0; iCurrentTilt < _stationCount; iCurrentTilt++)
     {
-        bContinue = false;
         if (bForwards)
         {
             iCurrentPan = 0;
@@ -39,14 +36,6 @@ void Retriever::RetrievalThread ()
         bPanReached = false;
         while (!bPanReached)
         {
-            if (RunningState == idle)
-                return;
-            if (RunningState == paused)
-            {
-                bContinue = true;
-                continue;
-            }
-
             std::cout <<"Retrieving image at:\tP(" << iCurrentPan
                      <<")\tT(" << iCurrentTilt<<")\n";
             _panTilt.PanPosition(PAN_STATIONS[iCurrentPan]);
@@ -78,7 +67,6 @@ void Retriever::RetrievalThread ()
             {
                 // Bail if an error is received.
                 std::cout << "Error pulling in images. Bailing";
-                RunningState = failed;
                 return;
             }
 
@@ -95,12 +83,6 @@ void Retriever::RetrievalThread ()
                     iCurrentPan--;
             }
         }
-
-        if (bContinue)
-        {
-            iCurrentTilt--;
-            iCurrentPan--;
-        }
     }
 
     // Once complete, change our running state.
@@ -110,6 +92,9 @@ void Retriever::RetrievalThread ()
     // Save the final image.
    // _stitcher.SaveImage ();
     _stitcher.UpdateDisplay();
+
+    // Start over
+    RetrievalThread();
 }
 
 void Retriever::BeginCapture ()
