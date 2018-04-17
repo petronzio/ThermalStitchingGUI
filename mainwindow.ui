@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Thermal Image Stitcher</string>
   </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QLabel" name="image">
     <property name="geometry">
@@ -21,19 +24,6 @@
       <y>0</y>
       <width>320</width>
       <height>320</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="diag">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>30</y>
-      <width>101</width>
-      <height>51</height>
      </rect>
     </property>
     <property name="text">

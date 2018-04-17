@@ -14,7 +14,10 @@ bool PanTilt::Initialize (void)
         return false;
     usleep(COM_DELAY);
 
-    return ExecuteTransmission ();
+    if (!ExecuteTransmission ())
+        return ExecuteTransmission();
+    else
+        return true;
 }
 
 bool PanTilt::ExecuteTransmission()
